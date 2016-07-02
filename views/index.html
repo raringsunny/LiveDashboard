@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dashboard Starter UI, by Keen IO</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' />
+  <link rel="stylesheet" type="text/css" href="/assets/lib/bootstrap/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" type="text/css" href="/assets/css/keen-dashboards.css" />
+  
+  
+  <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+        function drawChart() {
+
+            // var data = google.visualization.arrayToDataTable([
+            //    ['Pizza', 'Sales Count'],
+            //    ['Sal\'s Supreme', 52],
+            //    ['Pepperoni Perfection', 92],
+            //    ['Hawaiian Hula', 27],
+            //    ['Posiively Pesto', 107],
+            //    ['Very Veggie', 9] 
+            // ]);
+
+            var data, chart;
+
+            // var queryString = encodeURIComponent('SELECT A, B, C, D LIMIT 5 OFFSET 8');
+
+            var url = "https://docs.google.com/spreadsheets/d/1Inndlb0HVe7D7GLvB9qwb3GsC0tKKyHmPUUhOHQwxs0/gviz/tq?range=A1:D12";
+
+            
+
+            var options = {
+                title: 'Burn-up Chart - SpiceJet Q400',
+                titleTextStyle: {
+                    fontSize: 18
+                }
+            };
+
+            var options1 = {
+                title: 'Burn-down Chart - SpiceJet Q400',
+                titleTextStyle: {
+                    fontSize: 18
+                }
+            };
+
+            setTimeout(drawChart, 5000);
+
+            var query = new google.visualization.Query(url);
+            query.send(handleQueryResponse);
+
+
+            function handleQueryResponse(response) {
+                data = response.getDataTable();
+                var chart = new google.visualization.LineChart(document.getElementById('div_burnup-chart'));
+                chart.draw(data, options);
+
+
+                var chart1 = new google.visualization.LineChart(document.getElementById('div_burndown-chart'));
+                chart1.draw(data, options1);
+
+            }
+
+
+        }
+
+
+        function drawBurnDownChart() {
+
+            // var data = google.visualization.arrayToDataTable([
+            //    ['Pizza', 'Sales Count'],
+            //    ['Sal\'s Supreme', 52],
+            //    ['Pepperoni Perfection', 92],
+            //    ['Hawaiian Hula', 27],
+            //    ['Posiively Pesto', 107],
+            //    ['Very Veggie', 9] 
+            // ]);
+
+            var data, chart, chart1;
+
+            // var queryString = encodeURIComponent('SELECT A, B, C, D LIMIT 5 OFFSET 8');
+
+            var url = "https://docs.google.com/spreadsheets/d/1Inndlb0HVe7D7GLvB9qwb3GsC0tKKyHmPUUhOHQwxs0/gviz/tq?range=A1:D12";
+
+            
+
+            var options = {
+                title: 'Burn-up Chart - SpiceJet Q400',
+                titleTextStyle: {
+                    fontSize: 18
+                }
+            };
+
+            setTimeout(drawChart, 1000);
+
+            var query = new google.visualization.Query(url);
+            query.send(handleQueryResponse);
+
+
+            function handleQueryResponse(response) {
+                data = response.getDataTable();
+                var chart = new google.visualization.LineChart(document.getElementById('div_burndown-chart'));
+                
+                chart.draw(data, options);
+                
+            }
+
+
+        }
+
+
+        google.load('visualization', "1.0", {
+            'packages': ['corechart'],
+            'callback': drawChart
+        });
+    </script>
+  
+  
+  
+  
+  
+</head>
+<body class="application">
+
+  <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <!--<a class="navbar-brand" href="../">
+          <span class="glyphicon glyphicon-chevron-left"></span>
+        </a>-->
+        <!--<a class="navbar-brand" href="./">Dashboard Starter UI</a>-->
+      </div>
+      <!--<div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav navbar-left">
+          <li><a href="https://keen.io">Home</a></li>
+          <li><a href="https://keen.io/team">Team</a></li>
+          <li><a href="https://github.com/keenlabs/dashboards/tree/gh-pages/examples/starter-kit">Source</a></li>
+          <li><a href="https://groups.google.com/forum/#!forum/keen-io-devs">Community</a></li><li><a href="http://stackoverflow.com/questions/tagged/keen-io?sort=newest&pageSize=15">Technical Support</a></li>
+        </ul>
+      </div>-->
+    </div>
+  </div>
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="chart-wrapper">
+          <div class="chart-title">
+            Burn-up chart
+          </div>
+          <div class="chart-stage">
+            <!--<div id="chart-01"></div>-->
+            <div id="div_burnup-chart"></div>
+          </div>
+          <div class="chart-notes">
+            This is a sample text region to describe this chart.
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-6">
+        <div class="chart-wrapper">
+          <div class="chart-title">
+            Pageviews by browser (past 5 days)
+          </div>
+          <div class="chart-stage">
+            <div id="chart-02"></div>
+          </div>
+          <div class="chart-notes">
+            Notes go down here
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="chart-wrapper">
+          <div class="chart-title">
+            Burn-down Chart
+          </div>
+          <div class="chart-stage">
+            <!-- <div id="chart-03"></div> -->
+            <div id="div_burndown-chart"></div>
+          </div>
+          <div class="chart-notes">
+            Notes go down here
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-6">
+        <div class="chart-wrapper">
+          <div class="chart-title">
+            Impressions by device
+          </div>
+          <div class="chart-stage">
+            <div id="chart-04"></div>
+          </div>
+          <div class="chart-notes">
+            Notes go down here
+          </div>
+        </div>
+      </div>
+
+      <!-- <div class="col-sm-4">
+        <div class="chart-wrapper">
+          <div class="chart-title">
+            Impressions by country
+          </div>
+          <div class="chart-stage">
+            <div id="chart-05"></div>
+          </div>
+          <div class="chart-notes">
+            Notes go down here
+          </div>
+        </div>
+      </div> -->
+
+    </div>
+
+    <!-- <div class="row">
+      <div class="col-sm-3">
+        <div class="chart-wrapper">
+          <img data-src="holder.js/100%x150/white">
+        </div>
+      </div>
+      <div class="col-sm-3">
+        <div class="chart-wrapper">
+          <img data-src="holder.js/100%x150/white">
+        </div>
+      </div>
+      <div class="col-sm-3">
+        <div class="chart-wrapper">
+          <img data-src="holder.js/100%x150/white">
+        </div>
+      </div>
+      <div class="col-sm-3">
+        <div class="chart-wrapper">
+          <img data-src="holder.js/100%x150/white">
+        </div>
+      </div>
+    </div> -->
+
+    <hr>
+
+    <p class="small text-muted">Built with &#9829; by <a href="https://keen.io">Keen IO</a></p>
+
+  </div>
+
+  <script type="text/javascript" src="/assets/lib/jquery/dist/jquery.min.js"></script>
+  <script type="text/javascript" src="/assets/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+
+  <script type="text/javascript" src="/assets/lib/holderjs/holder.js"></script>
+  <script>
+    Holder.add_theme("white", { background:"#fff", foreground:"#a7a7a7", size:10 });
+  </script>
+
+  <script type="text/javascript" src="/assets/lib/keen-js/dist/keen.min.js"></script>
+  <script type="text/javascript" src="/assets/js/meta.js"></script>
+  <script type="text/javascript" src="/assets/js/keen.dashboard.js"></script>
+
+</body>
+</html>

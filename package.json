@@ -1,0 +1,19 @@
+{
+  "name": "asanaIntegration",
+  "version": "1.0.0",
+  "description": "interface with Asana",
+  "main": "app.js",
+  "dependencies": {
+    "asana": "^0.14.1",
+    "asana-api": "^1.0.0",
+    "ejs": "^2.4.1",
+    "express": "^4.13.4",
+    "lodash": "^4.12.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Manoj Mohan",
+  "license": "ISC"
+}
