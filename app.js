@@ -53,7 +53,7 @@ app.get('/Dashboard', function(req, res) {
 
 
 
-		res.send(filterp);
+		// res.send(filterp);
 
     	// res.send(projects);
         // projectList = projects;
@@ -66,7 +66,7 @@ app.get('/Dashboard', function(req, res) {
         // res.send()
         // res.render('test', { data: filterp });
     });
-// res.render('index');
+res.render('index');
 });
 
 
